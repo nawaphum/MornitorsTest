@@ -20,7 +20,7 @@ namespace MornitorsTest
     }
     public class EvacuationZone
     {
-        public string? ZoneID { get; set; }
+        public string ZoneID { get; set; } = "";
         public LocationCoordinates? LocationCoordinates { get; set; }
         public int? NumberOfPeople { get; set; }
         public int? UrgencyLevel { get; set; }
@@ -30,6 +30,14 @@ namespace MornitorsTest
     {
         public double? latitude { get; set; }
         public double? longitude { get; set; }
+    }
+    public class EvacuationPlan
+    {
+        public string? GUID { get; set; }
+        public string? ZoneID { get; set; }
+        public string? VehicleID { get; set; }
+        public string? ETA { get; set; }
+        public int? NumberOfPeople { get; set; }
     }
     public class Vehicles
     {
