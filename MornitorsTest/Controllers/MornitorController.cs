@@ -13,39 +13,39 @@ namespace MornitorsTest.Controllers
         }
 
         [HttpPost("evacuation-zones")]
-        public IActionResult AddEvacuationZones(EvacuationZone req)
+        public async Task<IActionResult> AddEvacuationZones(EvacuationZone req)
         {
-            var res = mornitorsService.AddEvacuationZones(req);
+            var res = await mornitorsService.AddEvacuationZones(req);
             return StatusCode((int)res.StatusCode, res);
         }
         [HttpPost("vehicles")]
-        public IActionResult VerifyThaiID(Vehicles req)
+        public async Task<IActionResult> VerifyThaiID(Vehicles req)
         {
-            var res = mornitorsService.AddVehicles(req);
+            var res = await mornitorsService.AddVehicles(req);
             return StatusCode((int)res.StatusCode, res);
         }
         [HttpPost("evacuations/plan")]
-        public IActionResult EvacuationsPlan(EvacuationPlan req)
+        public async Task<IActionResult> EvacuationsPlan(EvacuationPlan req)
         {
-            var res = mornitorsService.EvacuationPlan(req);
+            var res = await mornitorsService.EvacuationPlan(req);
             return StatusCode((int)res.StatusCode, res);
         }
         [HttpGet("evacuations/status")]
-        public IActionResult EvacuationsStatus()
+        public async Task<IActionResult> EvacuationsStatus()
         {
-            var res = mornitorsService.EvacuationStatus();
+            var res = await mornitorsService.EvacuationStatus();
             return StatusCode((int)res.StatusCode, res);
         }
         [HttpPut("evacuations/update")]
-        public IActionResult EvacuationsUpdate(EvacuationPlan req)
+        public async Task<IActionResult> EvacuationsUpdate(EvacuationPlan req)
         {
-            var res = mornitorsService.EvacuationUpdate(req);
+            var res = await mornitorsService.EvacuationUpdate(req);
             return StatusCode((int)res.StatusCode, res);
         }
         [HttpDelete("evacuations/clear")]
-        public IActionResult EvacuationsClear()
+        public async Task<IActionResult> EvacuationsClear()
         {
-            var res = mornitorsService.EvacuationClear();
+            var res = await mornitorsService.EvacuationClear();
             return StatusCode((int)res.StatusCode, res);
         }
     }
