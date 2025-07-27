@@ -25,9 +25,9 @@ namespace MornitorsTest.Controllers
             return StatusCode((int)res.StatusCode, res);
         }
         [HttpPost("evacuations/plan")]
-        public async Task<IActionResult> EvacuationsPlan(EvacuationPlan req)
+        public async Task<IActionResult> EvacuationsPlan()
         {
-            var res = await mornitorsService.EvacuationPlan(req);
+            var res = await mornitorsService.EvacuationPlan();
             return StatusCode((int)res.StatusCode, res);
         }
         [HttpGet("evacuations/status")]
@@ -37,7 +37,7 @@ namespace MornitorsTest.Controllers
             return StatusCode((int)res.StatusCode, res);
         }
         [HttpPut("evacuations/update")]
-        public async Task<IActionResult> EvacuationsUpdate(EvacuationPlan req)
+        public async Task<IActionResult> EvacuationsUpdate(EvacuationZoneUpdate req)
         {
             var res = await mornitorsService.EvacuationUpdate(req);
             return StatusCode((int)res.StatusCode, res);

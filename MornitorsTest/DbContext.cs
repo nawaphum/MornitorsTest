@@ -22,6 +22,8 @@ namespace MornitorsTest
         public double? Longitude { get; set; }
         public int? NumberOfPeople { get; set; }
         public int? UrgencyLevel { get; set; }
+        public int? RemainingPeople { get; set; }
+        public string? VehicleID { get; set; }
     }
     public class Vehicless
     {

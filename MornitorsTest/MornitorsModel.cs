@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Options;
 using System.Net;
 
 namespace MornitorsTest
@@ -26,6 +27,13 @@ namespace MornitorsTest
         public int? UrgencyLevel { get; set; }
 
     }
+    public class EvacuationZoneUpdate
+    {
+        public string ZoneID { get; set; } = "";
+        public int? TotalEvacuated { get; set; }
+        public int? VehicleID { get; set; }
+
+    }
     public class LocationCoordinates
     {
         public double? latitude { get; set; }
@@ -33,11 +41,19 @@ namespace MornitorsTest
     }
     public class EvacuationPlan
     {
-        public string? GUID { get; set; }
+        public int? Oders { get; set; }
         public string? ZoneID { get; set; }
         public string? VehicleID { get; set; }
         public string? ETA { get; set; }
         public int? NumberOfPeople { get; set; }
+
+    }
+    public class EvacuationStatus
+    {
+        public string? ZoneID { get; set; }
+        public int? TotalEvacuated { get; set; }
+        public int? RemainingPeople { get; set; }
+        public string? VehicleID { get; set; }
     }
     public class Vehicles
     {
