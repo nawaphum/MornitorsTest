@@ -160,10 +160,8 @@ namespace MornitorsTest
 
                 var server = iconect.GetServer(iconect.GetEndPoints().First());
                 var zoneKeys = server.Keys(pattern: "evacuationzones:*").ToArray();
-                var vehicleKeys = server.Keys(pattern: "vehicles:*").ToArray();
 
                 var zones = new List<EvacuationZones>();
-                var vehicles = new List<Vehicless>();
 
                 foreach (var key in zoneKeys)
                 {
@@ -171,15 +169,6 @@ namespace MornitorsTest
                     if (!string.IsNullOrWhiteSpace(json))
                         zones.Add(JsonConvert.DeserializeObject<EvacuationZones>(json)!);
                 }
-
-                foreach (var key in vehicleKeys)
-                {
-                    var json = await redis.StringGetAsync(key);
-                    if (!string.IsNullOrWhiteSpace(json))
-                        vehicles.Add(JsonConvert.DeserializeObject<Vehicless>(json)!);
-                }
-
-                zones = zones.OrderByDescending(z => z.UrgencyLevel).ToList();
 
                 var status = new List<EvacuationStatus>();
 
@@ -231,7 +220,11 @@ namespace MornitorsTest
                 var obj = new EvacuationZones
                 {
                     ZoneID = req.ZoneID,
-                    RemainingPeople = zonesData.RemainingPeople ?? 0 - req.TotalEvacuated,
+                    Latitude = zonesData.Latitude ?? 0,
+                    Longitude = zonesData.Longitude ?? 0,
+                    NumberOfPeople = zonesData.NumberOfPeople,
+                    UrgencyLevel = zonesData.UrgencyLevel,
+                    RemainingPeople = (zonesData?.RemainingPeople ?? 0) - req.TotalEvacuated,
                 };
                 string json = JsonConvert.SerializeObject(obj);
                 await redis.StringSetAsync($"evacuationzones:{req.ZoneID}", json);

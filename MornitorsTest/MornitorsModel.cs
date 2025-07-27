@@ -31,7 +31,7 @@ namespace MornitorsTest
     {
         public string ZoneID { get; set; } = "";
         public int? TotalEvacuated { get; set; }
-        public int? VehicleID { get; set; }
+        public string? VehicleID { get; set; }
 
     }
     public class LocationCoordinates

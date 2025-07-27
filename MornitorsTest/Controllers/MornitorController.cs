@@ -19,7 +19,7 @@ namespace MornitorsTest.Controllers
             return StatusCode((int)res.StatusCode, res);
         }
         [HttpPost("vehicles")]
-        public async Task<IActionResult> VerifyThaiID(Vehicles req)
+        public async Task<IActionResult> AddVehicles(Vehicles req)
         {
             var res = await mornitorsService.AddVehicles(req);
             return StatusCode((int)res.StatusCode, res);
